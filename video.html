@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="robots" content="index,follow">
+    <title>糖心视频在线观看 - 发现精彩内容</title>
+    <meta name="description" content="糖心tv、溏心vlog、、等精彩内容每日更新。糖心免费版在线观看入口。">
+    <meta name="keywords" content="糖心vlog网页版,精彩视频,美妆视频,舞蹈视频,美食视频">
+    <link rel="canonical" href="/video/">
+    <link rel="stylesheet" href="static/css/style.css?v=20240315">
+    <script type="text/javascript" src="static/js/tz.js"></script>
+    <style>
+        .filter-tag {
+            transition: all 0.2s;
+        }
+        .filter-tag.active {
+            background: linear-gradient(145deg, #ff4d6d, #c9184a) !important;
+            color: #fff !important;
+        }
+        .video-card {
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-area">
+                    <div class="logo-circle">糖</div>
+                    <div class="logo-text">
+                        <h1>糖心视频</h1>
+                        <span>发现精彩内容</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-item">首页</a>
+                    <a href="video.html" class="nav-item active">视频</a>
+                    <a href="tv.html" class="nav-item">糖心TV</a>
+                    <a href="creator.html">创作中心</a>
+                    <a href="community.html">社区</a>
+                    <a href="tools.html">创作工具</a>
+                    <a href="search.html" class="nav-item">搜索</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 面包屑 -->
+        <div style="padding: 20px 0; color: #8d99ae; font-size: 14px;">
+            <a href="index.html" style="color: #ff4d6d; text-decoration: none;">首页</a> &gt; 
+            <span style="color: #2b2d42;">视频</span>
+        </div>
+
+        <!-- 页面标题 -->
+        <div style="background: linear-gradient(145deg, #ff4d6d, #c9184a); border-radius: 32px; padding: 45px 40px; color: #fff; margin-bottom: 35px;">
+            <h1 style="font-size: 38px; margin-bottom: 12px;">糖心视频</h1>
+            <p style="font-size: 16px; opacity: 0.92;">海量精彩内容，美妆、舞蹈、美食、旅行，每日更新，总有你喜欢的</p>
+        </div>
+
+        <!-- 分类筛选 - 这个样式后面要统一 -->
+        <div class="filter-bar" style="background: #fff; border-radius: 60px; padding: 8px; margin-bottom: 35px; box-shadow: 0 3px 12px rgba(0,0,0,0.05); display: inline-block; width: auto;">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                <span class="filter-tag active" onclick="filterVideos('all')" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">全部</span>
+                <span class="filter-tag" onclick="filterVideos('beauty')" style="background: #f5f5f5; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">💄 美妆</span>
+                <span class="filter-tag" onclick="filterVideos('dance')" style="background: #f5f5f5; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">💃 舞蹈</span>
+                <span class="filter-tag" onclick="filterVideos('anime')" style="background: #f5f5f5; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">🎭 二次元</span>
+                <span class="filter-tag" onclick="filterVideos('food')" style="background: #f5f5f5; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">🍳 美食</span>
+                <span class="filter-tag" onclick="filterVideos('travel')" style="background: #f5f5f5; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">✈️ 旅行</span>
+                <span class="filter-tag" onclick="filterVideos('daily')" style="background: #f5f5f5; padding: 10px 28px; border-radius: 50px; font-size: 14px; cursor: pointer;">📹 日常vlog</span>
+            </div>
+        </div>
+
+        <!-- 视频统计 -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <div>
+                <span style="font-size: 14px; color: #8d99ae;">共 <strong style="color: #ff4d6d;">128</strong> 个视频</span>
+                <span style="margin-left: 15px; font-size: 13px; color: #8d99ae;">今日更新 8 个</span>
+            </div>
+            <div>
+                <select id="sortSelect" onchange="sortVideos()" style="padding: 8px 16px; border-radius: 30px; border: 1px solid #eee; background: #fff; font-size: 13px;">
+                    <option value="hot">🔥 最热</option>
+                    <option value="new">🆕 最新</option>
+                    <option value="views">👀 最多播放</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 视频列表 - 网格布局 -->
+        <div class="video-list" id="videoList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; margin-bottom: 55px;">
+            <!-- 视频卡片 1 -->
+            <div class="video-card" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('日系甜美妆容教程', '糖心姐姐')">
+                <div style="position: relative;">
+                    <img src="https://picsum.photos/id/20/400/225" style="width: 100%; height: 170px; object-fit: cover;" alt="视频封面" loading="lazy">
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">08:32</span>
+                    <span style="position: absolute; top: 12px; left: 12px; background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px;">美妆</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.4;">日系甜美妆容教程｜手残党也能学会</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="https://picsum.photos/id/64/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                            <span style="font-size: 13px; color: #2b2d42;">糖心姐姐</span>
+                        </div>
+                        <span style="font-size: 12px; color: #8d99ae;">12.5w播放</span>
+                    </div>
+                    <div style="display: flex; gap: 12px; font-size: 12px; color: #8d99ae;">
+                        <span>❤️ 2.3k点赞</span>
+                        <span>💬 456评论</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 视频卡片 2 -->
+            <div class="video-card" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('NewJeans舞蹈翻跳', '糖心舞动')">
+                <div style="position: relative;">
+                    <img src="https://picsum.photos/id/26/400/225" style="width: 100%; height: 170px; object-fit: cover;" alt="视频封面" loading="lazy">
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">03:45</span>
+                    <span style="position: absolute; top: 12px; left: 12px; background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px;">舞蹈</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">NewJeans新歌舞蹈翻跳｜超丝滑运镜</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="https://picsum.photos/id/29/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                            <span style="font-size: 13px;">糖心舞动</span>
+                        </div>
+                        <span style="font-size: 12px; color: #8d99ae;">15.2w播放</span>
+                    </div>
+                    <div style="display: flex; gap: 12px; font-size: 12px; color: #8d99ae;">
+                        <span>❤️ 3.8k点赞</span>
+                        <span>💬 672评论</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 视频卡片 3 -->
+            <div class="video-card" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('一人食｜懒人版红烧肉', '糖心美食家')">
+                <div style="position: relative;">
+                    <img src="https://picsum.photos/id/127/400/225" style="width: 100%; height: 170px; object-fit: cover;" alt="视频封面" loading="lazy">
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">10:22</span>
+                    <span style="position: absolute; top: 12px; left: 12px; background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px;">美食</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">一人食｜懒人版红烧肉，电饭煲就能搞定</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="https://picsum.photos/id/30/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                            <span style="font-size: 13px;">糖心美食家</span>
+                        </div>
+                        <span style="font-size: 12px; color: #8d99ae;">9.8w播放</span>
+                    </div>
+                    <div style="display: flex; gap: 12px; font-size: 12px; color: #8d99ae;">
+                        <span>❤️ 1.9k点赞</span>
+                        <span>💬 342评论</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 视频卡片 4 -->
+            <div class="video-card" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('樱花树下的初音未来', '动漫宅')">
+                <div style="position: relative;">
+                    <img src="https://picsum.photos/id/104/400/225" style="width: 100%; height: 170px; object-fit: cover;" alt="视频封面" loading="lazy">
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">05:18</span>
+                    <span style="position: absolute; top: 12px; left: 12px; background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px;">二次元</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">樱花树下的初音未来｜超还原Cosplay</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="https://picsum.photos/id/27/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                            <span style="font-size: 13px;">动漫宅</span>
+                        </div>
+                        <span style="font-size: 12px; color: #8d99ae;">8.6w播放</span>
+                    </div>
+                    <div style="display: flex; gap: 12px; font-size: 12px; color: #8d99ae;">
+                        <span>❤️ 2.1k点赞</span>
+                        <span>💬 389评论</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 视频卡片 5 -->
+            <div class="video-card" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('早秋穿搭灵感', '糖心时尚')">
+                <div style="position: relative;">
+                    <img src="https://picsum.photos/id/96/400/225" style="width: 100%; height: 170px; object-fit: cover;" alt="视频封面" loading="lazy">
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">06:55</span>
+                    <span style="position: absolute; top: 12px; left: 12px; background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px;">穿搭</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">早秋穿搭灵感｜百搭单品分享</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="https://picsum.photos/id/55/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                            <span style="font-size: 13px;">糖心时尚</span>
+                        </div>
+                        <span style="font-size: 12px; color: #8d99ae;">7.3w播放</span>
+                    </div>
+                    <div style="display: flex; gap: 12px; font-size: 12px; color: #8d99ae;">
+                        <span>❤️ 1.6k点赞</span>
+                        <span>💬 234评论</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 视频卡片 6 -->
+            <div class="video-card" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('一个人的周末｜治愈系vlog', '糖心生活家')">
+                <div style="position: relative;">
+                    <img src="https://picsum.photos/id/169/400/225" style="width: 100%; height: 170px; object-fit: cover;" alt="视频封面" loading="lazy">
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">12:08</span>
+                    <span style="position: absolute; top: 12px; left: 12px; background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px;">日常</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">一个人的周末｜治愈系慢生活vlog</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="https://picsum.photos/id/42/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                            <span style="font-size: 13px;">糖心生活家</span>
+                        </div>
+                        <span style="font-size: 12px; color: #8d99ae;">11.2w播放</span>
+                    </div>
+                    <div style="display: flex; gap: 12px; font-size: 12px; color: #8d99ae;">
+                        <span>❤️ 2.5k点赞</span>
+                        <span>💬 512评论</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <div style="display: flex; justify-content: center; gap: 12px; margin: 20px 0 60px;">
+            <a href="javascript:void(0)" class="page-active" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">1</a>
+            <a href="javascript:void(0)" onclick="loadPage(2)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">2</a>
+            <a href="javascript:void(0)" onclick="loadPage(3)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">3</a>
+            <a href="javascript:void(0)" onclick="loadPage(4)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">4</a>
+            <a href="javascript:void(0)" onclick="loadPage(5)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">5</a>
+            <a href="javascript:void(0)" onclick="nextPage()" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">下一页</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>糖心视频</h4>
+                    <p>海量精彩内容，美妆、舞蹈、美食、旅行，每日更新，总有你喜欢的。</p>
+                </div>
+                <div class="footer-links">
+                    <h5>热门分类</h5>
+                    <a href="javascript:void(0)" onclick="filterVideos('beauty')">美妆</a>
+                    <a href="javascript:void(0)" onclick="filterVideos('dance')">舞蹈</a>
+                    <a href="javascript:void(0)" onclick="filterVideos('food')">美食</a>
+                    <a href="javascript:void(0)" onclick="filterVideos('travel')">旅行</a>
+                </div>
+                <div class="footer-links">
+                    <h5>推荐视频</h5>
+                    <a href="javascript:void(0)" onclick="playVideo('日系甜美妆容教程', '糖心姐姐')">热门美妆</a>
+                    <a href="javascript:void(0)" onclick="playVideo('NewJeans舞蹈翻跳', '糖心舞动')">热门舞蹈</a>
+                </div>
+                <div class="footer-links">
+                    <h5>帮助</h5>
+                    <a href="javascript:void(0)" onclick="location.href='help.html'">帮助中心</a>
+                    <a href="javascript:void(0)" onclick="location.href='report.html'">侵权举报</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2020-<script>document.write(new Date().getFullYear())</script> 糖心视频 ｜ 发现精彩内容</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    let currentFilter = 'all';
+    let currentSort = 'hot';
+    
+    function filterVideos(category) {
+        currentFilter = category;
+        console.log('[筛选] 分类：' + category);
+        
+        // 更新选中样式
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.classList.remove('active');
+            tag.style.background = '#f5f5f5';
+            tag.style.color = '#2b2d42';
+        });
+        event.target.classList.add('active');
+        event.target.style.background = 'linear-gradient(145deg, #ff4d6d, #c9184a)';
+        event.target.style.color = '#fff';
+        
+        // TODO: 实际项目这里会请求接口
+        alert('正在加载「' + category + '」分类的视频...');
+    }
+    
+    function sortVideos() {
+        const sortType = document.getElementById('sortSelect').value;
+        currentSort = sortType;
+        console.log('[排序] 方式：' + sortType);
+        alert('正在按「' + (sortType === 'hot' ? '最热' : sortType === 'new' ? '最新' : '最多播放') + '」排序...');
+    }
+    
+    function playVideo(title, author) {
+        console.log('[播放视频] ' + title + ' by ' + author);
+        window.location.href = 'video-detail.html?title=' + encodeURIComponent(title);
+    }
+    
+    function loadPage(page) {
+        console.log('[翻页] 第' + page + '页');
+        alert('加载第 ' + page + ' 页视频...');
+    }
+    
+    function nextPage() {
+        console.log('[下一页]');
+        alert('加载下一页视频...');
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('糖心视频页面已加载 | ' + new Date().toLocaleString());
+    });
+    </script>
+</body>
+</html>

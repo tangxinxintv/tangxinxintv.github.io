@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="robots" content="index,follow">
+    <title>﻿糖心社区 - 糖心vlog网页版 | 糖心vlog官网互动社区</title>
+    <meta name="description" content="糖心社区是一个温暖的互动平台，在这里你可以和喜欢的创作者交流，参与热门话题讨论，分享你的生活点滴。">
+    <meta name="keywords" content="糖心社区,视频社区,话题讨论,创作者互动,粉丝交流">
+    <link rel="canonical" href="/community/">
+    <link rel="stylesheet" href="static/css/style.css?v=20240315">
+    <script type="text/javascript" src="static/js/tz.js"></script>
+    <!-- 社区页面专属样式 - 临时内联，回头整理到style.css -->
+    <style>
+        .community-badge { display: inline-block; }
+        .temp-community-fix { margin-bottom: 0; }
+        /* 直播脉冲动画 */
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .live-badge {
+            animation: pulse-red 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-area">
+                    <div class="logo-circle">糖</div>
+                    <div class="logo-text">
+                        <h1>糖心社区</h1>
+                        <span>和喜欢的人一起玩</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-item">首页</a>
+                    <a href="video.html" class="nav-item">视频</a>
+                    <a href="tv.html" class="nav-item">糖心TV</a>
+                    <a href="creator.html">创作中心</a>
+                    <a href="community.html" class="nav-item active">社区</a>
+                    <a href="tools.html">创作工具</a>
+                    <a href="search.html" class="nav-item">搜索</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 面包屑 - 产品说社区要加这个 -->
+        <div class="breadcrumb" style="padding: 20px 0; color: #8d99ae; font-size: 14px;">
+            <a href="index.html" style="color: #ff4d6d; text-decoration: none;">首页</a> &gt; 
+            <span style="color: #2b2d42;">糖心社区</span>
+        </div>
+
+        <!-- 社区头部 - 这个渐变色是UI小姐姐调的 -->
+        <div class="community-hero" style="background: linear-gradient(135deg, #fce4e8 0%, #ffe9f0 100%); border-radius: 30px; padding: 45px 40px; margin-bottom: 35px; text-align: center;">
+            <span style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 6px 22px; border-radius: 50px; font-size: 14px; display: inline-block; margin-bottom: 20px; font-weight: 500;">💬 糖心官方社区</span>
+            <h1 style="font-size: 38px; margin-bottom: 15px; color: #2b2d42;">糖心社区</h1>
+            <p style="color: #4a4e69; max-width: 600px; margin: 0 auto; line-height: 1.6;">和喜欢的创作者一起交流，分享你的生活，发现更多美好瞬间</p>
+        </div>
+
+        <!-- 社区数据 - 从后台接口拿，先写死 -->
+        <div class="community-stats" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 45px;">
+            <div class="stat-card" style="background: #fff; border-radius: 24px; padding: 28px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 34px; font-weight: 800; color: #ff4d6d;">128w</div>
+                <div style="color: #8d99ae; margin-top: 8px;">社区成员</div>
+            </div>
+            <div class="stat-card" style="background: #fff; border-radius: 24px; padding: 28px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 34px; font-weight: 800; color: #ff4d6d;">56w</div>
+                <div style="color: #8d99ae; margin-top: 8px;">话题讨论</div>
+            </div>
+            <div class="stat-card" style="background: #fff; border-radius: 24px; padding: 28px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 34px; font-weight: 800; color: #ff4d6d;">2.3k+</div>
+                <div style="color: #8d99ae; margin-top: 8px;">直播场次</div>
+            </div>
+            <div class="stat-card" style="background: #fff; border-radius: 24px; padding: 28px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 34px; font-weight: 800; color: #ff4d6d;">89w</div>
+                <div style="color: #8d99ae; margin-top: 8px;">日互动量</div>
+            </div>
+        </div>
+
+        <!-- 热门话题模块 -->
+        <div class="section-header">
+            <h3>🔥 热门话题</h3>
+            <a href="javascript:void(0)" class="view-all" onclick="showMoreTopics()">更多话题 →</a>
+        </div>
+        <div class="topics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-bottom: 45px;">
+            <div class="topic-card" style="background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="joinTopic('糖心姐姐冬日穿搭')">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 5px 16px; border-radius: 30px; font-size: 12px; font-weight: 500;">🔥 热门</span>
+                    <span style="color: #8d99ae; font-size: 13px;">2.3w讨论</span>
+                </div>
+                <h3 style="font-size: 20px; margin-bottom: 12px; color: #2b2d42;">#糖心姐姐冬日穿搭#</h3>
+                <p style="color: #8d99ae; margin-bottom: 18px; line-height: 1.5;">分享糖心姐姐的最新冬日穿搭，一起讨论你的搭配灵感，晒出你的ootd~</p>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <img src="https://picsum.photos/id/64/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/27/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/29/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <span style="color: #8d99ae; font-size: 13px;">+126人参与</span>
+                </div>
+            </div>
+            <div class="topic-card" style="background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="joinTopic('舞蹈挑战')">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span style="background: #20c997; color: #fff; padding: 5px 16px; border-radius: 30px; font-size: 12px; font-weight: 500;">✨ 新话题</span>
+                    <span style="color: #8d99ae; font-size: 13px;">1.2w讨论</span>
+                </div>
+                <h3 style="font-size: 20px; margin-bottom: 12px; color: #2b2d42;">#舞蹈挑战#</h3>
+                <p style="color: #8d99ae; margin-bottom: 18px; line-height: 1.5;">跟着音乐一起跳起来，上传你的舞蹈视频参与挑战，赢糖心专属周边~</p>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <img src="https://picsum.photos/id/29/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/64/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/30/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <span style="color: #8d99ae; font-size: 13px;">+89人参与</span>
+                </div>
+            </div>
+            <div class="topic-card" style="background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="joinTopic('糖心情感树洞')">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span style="background: #fd7e14; color: #fff; padding: 5px 16px; border-radius: 30px; font-size: 12px; font-weight: 500;">💕 情感</span>
+                    <span style="color: #8d99ae; font-size: 13px;">3.8w讨论</span>
+                </div>
+                <h3 style="font-size: 20px; margin-bottom: 12px; color: #2b2d42;">#糖心情感树洞#</h3>
+                <p style="color: #8d99ae; margin-bottom: 18px; line-height: 1.5;">在这里倾诉心事，获得温暖的回应与支持，你不是一个人。</p>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <img src="https://picsum.photos/id/30/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/64/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/27/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <span style="color: #8d99ae; font-size: 13px;">+215人参与</span>
+                </div>
+            </div>
+            <div class="topic-card" style="background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="joinTopic('糖心vlog拍摄技巧')">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span style="background: #6f42c1; color: #fff; padding: 5px 16px; border-radius: 30px; font-size: 12px; font-weight: 500;">🎨 创作</span>
+                    <span style="color: #8d99ae; font-size: 13px;">9.2k讨论</span>
+                </div>
+                <h3 style="font-size: 20px; margin-bottom: 12px; color: #2b2d42;">#糖心vlog拍摄技巧#</h3>
+                <p style="color: #8d99ae; margin-bottom: 18px; line-height: 1.5;">分享你的vlog拍摄经验，交流创作心得，一起进步~</p>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <img src="https://picsum.photos/id/55/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/42/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <img src="https://picsum.photos/id/30/32/32" style="width: 32px; height: 32px; border-radius: 50%;" alt="用户头像">
+                    <span style="color: #8d99ae; font-size: 13px;">+56人参与</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 正在直播 -->
+        <div class="section-header">
+            <h3>🎥 正在直播</h3>
+            <a href="javascript:void(0)" class="view-all" onclick="viewAllLives()">全部直播 →</a>
+        </div>
+        <div class="live-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 45px;">
+            <div class="live-card" style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="enterLive('糖心姐姐的美妆直播')">
+                <div style="position: relative; height: 190px;">
+                    <img src="https://picsum.photos/id/64/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="直播封面">
+                    <span class="live-badge" style="position: absolute; top: 12px; left: 12px; background: #ff4444; color: #fff; padding: 5px 14px; border-radius: 30px; font-size: 12px; font-weight: 500;">🔴 直播中</span>
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.65); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px;">1.2w在看</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="margin-bottom: 6px; font-size: 16px;">糖心姐姐的美妆直播</h4>
+                    <p style="color: #8d99ae; font-size: 13px; margin-bottom: 12px;">今日主题：春季约会妆容教学</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://picsum.photos/id/64/30/30" style="width: 30px; height: 30px; border-radius: 50%;" alt="主播头像">
+                        <span style="font-size: 14px; font-weight: 500;">糖心姐姐</span>
+                    </div>
+                </div>
+            </div>
+            <div class="live-card" style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="enterLive('动漫宅的舞蹈教学')">
+                <div style="position: relative; height: 190px;">
+                    <img src="https://picsum.photos/id/27/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="直播封面">
+                    <span class="live-badge" style="position: absolute; top: 12px; left: 12px; background: #ff4444; color: #fff; padding: 5px 14px; border-radius: 30px; font-size: 12px; font-weight: 500;">🔴 直播中</span>
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.65); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px;">8.3k在看</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="margin-bottom: 6px; font-size: 16px;">动漫宅的舞蹈教学</h4>
+                    <p style="color: #8d99ae; font-size: 13px; margin-bottom: 12px;">零基础学热门舞蹈，今晚教NewJeans新歌</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://picsum.photos/id/27/30/30" style="width: 30px; height: 30px; border-radius: 50%;" alt="主播头像">
+                        <span style="font-size: 14px; font-weight: 500;">动漫宅</span>
+                    </div>
+                </div>
+            </div>
+            <div class="live-card" style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer;" onclick="enterLive('糖心聊天室')">
+                <div style="position: relative; height: 190px;">
+                    <img src="https://picsum.photos/id/30/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="直播封面">
+                    <span class="live-badge" style="position: absolute; top: 12px; left: 12px; background: #ff4444; color: #fff; padding: 5px 14px; border-radius: 30px; font-size: 12px; font-weight: 500;">🔴 直播中</span>
+                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.65); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px;">5.1k在看</span>
+                </div>
+                <div style="padding: 16px;">
+                    <h4 style="margin-bottom: 6px; font-size: 16px;">糖心聊天室</h4>
+                    <p style="color: #8d99ae; font-size: 13px; margin-bottom: 12px;">和糖心粉丝们一起聊天互动，抽奖送周边~</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://picsum.photos/id/42/30/30" style="width: 30px; height: 30px; border-radius: 50%;" alt="主播头像">
+                        <span style="font-size: 14px; font-weight: 500;">糖心小助手</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 社区精华帖 -->
+        <div class="section-header">
+            <h3>📝 社区精华</h3>
+            <a href="javascript:void(0)" class="view-all" onclick="viewMorePosts()">浏览更多 →</a>
+        </div>
+        <div class="posts-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 50px;">
+            <div class="post-card" style="background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="display: flex; gap: 15px; margin-bottom: 16px;">
+                    <img src="https://picsum.photos/id/64/50/50" style="width: 48px; height: 48px; border-radius: 50%;" alt="用户头像">
+                    <div>
+                        <h4 style="margin-bottom: 4px; font-size: 16px;">糖心姐姐</h4>
+                        <span style="color: #8d99ae; font-size: 12px;">糖心认证创作者 · 1小时前发布</span>
+                    </div>
+                </div>
+                <p style="color: #2b2d42; margin-bottom: 18px; line-height: 1.6;">分享我的最新妆容视频拍摄花絮，你们想看什么主题的教程？评论区告诉我~ 抽三个小可爱送同款口红！</p>
+                <div style="display: flex; gap: 24px; color: #8d99ae; font-size: 13px;">
+                    <span style="cursor: pointer;" onclick="likePost(this)">❤️ 点赞 2.3k</span>
+                    <span style="cursor: pointer;" onclick="commentOnPost()">💬 评论 456</span>
+                    <span style="cursor: pointer;" onclick="sharePost()">🔄 分享 128</span>
+                </div>
+            </div>
+            <div class="post-card" style="background: #fff; border-radius: 24px; padding: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="display: flex; gap: 15px; margin-bottom: 16px;">
+                    <img src="https://picsum.photos/id/29/50/50" style="width: 48px; height: 48px; border-radius: 50%;" alt="用户头像">
+                    <div>
+                        <h4 style="margin-bottom: 4px; font-size: 16px;">糖心舞动</h4>
+                        <span style="color: #8d99ae; font-size: 12px;">糖心舞蹈达人 · 3小时前发布</span>
+                    </div>
+                </div>
+                <p style="color: #2b2d42; margin-bottom: 18px; line-height: 1.6;">新舞蹈视频来啦！这次是超甜美的宅舞《恋爱循环》，希望你们喜欢~ 练习了整整一周，求鼓励！ #糖心舞蹈 #宅舞</p>
+                <div style="display: flex; gap: 24px; color: #8d99ae; font-size: 13px;">
+                    <span style="cursor: pointer;" onclick="likePost(this)">❤️ 点赞 3.8k</span>
+                    <span style="cursor: pointer;" onclick="commentOnPost()">💬 评论 672</span>
+                    <span style="cursor: pointer;" onclick="sharePost()">🔄 分享 234</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>糖心社区</h4>
+                    <p>糖心Vlog官方社区 - 和喜欢的人一起分享生活，发现更多美好瞬间。</p>
+                    <div class="hot-tags" style="justify-content: flex-start; margin-top: 15px;">
+                        <a href="javascript:void(0)" onclick="quickSearch('糖心社区')" style="background: rgba(255,255,255,0.1); color: #fff;">#糖心社区</a>
+                        <a href="javascript:void(0)" onclick="quickSearch('互动')" style="background: rgba(255,255,255,0.1); color: #fff;">#互动</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h5>热门话题</h5>
+                    <a href="javascript:void(0)" onclick="joinTopic('糖心姐姐冬日穿搭')">糖心姐姐穿搭</a>
+                    <a href="javascript:void(0)" onclick="joinTopic('舞蹈挑战')">舞蹈挑战</a>
+                    <a href="javascript:void(0)" onclick="joinTopic('糖心情感树洞')">情感树洞</a>
+                </div>
+                <div class="footer-links">
+                    <h5>社区规则</h5>
+                    <a href="javascript:void(0)" onclick="location.href='community-guide.html'">社区公约</a>
+                    <a href="javascript:void(0)" onclick="location.href='report.html'">举报中心</a>
+                    <a href="javascript:void(0)" onclick="location.href='feedback.html'">意见反馈</a>
+                </div>
+                <div class="footer-links">
+                    <h5>官方账号</h5>
+                    <a href="javascript:void(0)" onclick="visitCreator('糖心姐姐')">糖心姐姐</a>
+                    <a href="javascript:void(0)" onclick="visitCreator('糖心小助手')">糖心小助手</a>
+                    <a href="javascript:void(0)" onclick="visitCreator('糖心官方')">糖心官方</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2020-<script>document.write(new Date().getFullYear())</script> 糖心社区 ｜ 和喜欢的人一起分享生活</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // 话题相关
+    function joinTopic(topicName) {
+        console.log('[加入话题] ' + topicName);
+        window.location.href = 'topic.html?name=' + encodeURIComponent(topicName);
+    }
+    
+    function showMoreTopics() {
+        console.log('[查看更多话题]');
+        window.location.href = 'topics.html';
+    }
+    
+    // 直播相关
+    function viewAllLives() {
+        console.log('[查看全部直播]');
+        window.location.href = 'live.html';
+    }
+    
+    function enterLive(liveName) {
+        console.log('[进入直播间] ' + liveName);
+        window.location.href = 'live-room.html?name=' + encodeURIComponent(liveName);
+    }
+    
+    // 帖子互动 - 简单模拟，后面接接口
+    function likePost(el) {
+        var currentText = el.innerText;
+        if (currentText.includes('❤️')) {
+            // 模拟点赞
+            el.style.color = '#ff4d6d';
+            console.log('[点赞成功]');
+        }
+    }
+    
+    function commentOnPost() {
+        console.log('[打开评论框]');
+        // TODO: 打开评论模态框
+        alert('评论功能开发中，敬请期待~');
+    }
+    
+    function sharePost() {
+        console.log('[分享帖子]');
+        alert('分享链接已复制到剪贴板');
+    }
+    
+    function viewMorePosts() {
+        console.log('[查看更多帖子]');
+        window.location.href = 'community-posts.html';
+    }
+    
+    // 快捷搜索
+    function quickSearch(keyword) {
+        console.log('[快捷搜索] ' + keyword);
+        window.location.href = 'search.html?q=' + encodeURIComponent(keyword);
+    }
+    
+    function visitCreator(name) {
+        console.log('[访问创作者] ' + name);
+        window.location.href = 'creator.html?uid=' + encodeURIComponent(name);
+    }
+    
+    // 页面加载日志 - 方便调试
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('糖心社区页面已加载 | ' + new Date().toLocaleString());
+    });
+    </script>
+</body>
+</html>

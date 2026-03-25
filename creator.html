@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="robots" content="index,follow">
+    <title>糖心网页版创作中心 - 让创作更有价值</title>
+    <meta name="description" content="糖心创作中心是糖心Vlog官方创作者平台，提供视频发布、数据分析、收益变现等功能。加入我们，让创作更有价值。">
+    <meta name="keywords" content="创作中心,视频创作,创作者收益,糖心创作者">
+    <link rel="canonical" href="/creator/">
+    <link rel="stylesheet" href="static/css/style.css?v=20240315">
+    <script type="text/javascript" src="static/js/tz.js"></script>
+    <!-- 创作中心专属样式 - 后续整理 -->
+    <style>
+        .creator-card-hover {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .creator-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        /* 临时修复按钮样式 */
+        .btn-join {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-area">
+                    <div class="logo-circle">糖</div>
+                    <div class="logo-text">
+                        <h1>糖心创作中心</h1>
+                        <span>让创作更有价值</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-item">首页</a>
+                    <a href="video.html" class="nav-item">视频</a>
+                    <a href="tv.html" class="nav-item">糖心TV</a>
+                    <a href="creator.html" class="nav-item active">创作中心</a>
+                    <a href="community.html">社区</a>
+                    <a href="tools.html">创作工具</a>
+                    <a href="search.html" class="nav-item">搜索</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 面包屑 -->
+        <div class="breadcrumb" style="padding: 20px 0; color: #8d99ae; font-size: 14px;">
+            <a href="index.html" style="color: #ff4d6d; text-decoration: none;">首页</a> &gt; 
+            <span style="color: #2b2d42;">创作中心</span>
+        </div>
+
+        <!-- 头部区域 - 这个渐变是UI新调的 -->
+        <div class="creator-hero" style="background: linear-gradient(145deg, #1e1e2f 0%, #2a1e3a 100%); border-radius: 32px; padding: 52px 48px; color: #fff; margin-bottom: 35px;">
+            <h1 style="font-size: 42px; margin-bottom: 16px; font-weight: 700;">糖心创作中心</h1>
+            <p style="font-size: 18px; opacity: 0.9; max-width: 580px; line-height: 1.5;">糖心Vlog官方创作者平台 - 让创作更有价值，让你的才华被更多人看见</p>
+            <div style="display: flex; gap: 18px; margin-top: 32px; flex-wrap: wrap;">
+                <span style="background: rgba(255,255,255,0.18); padding: 8px 28px; border-radius: 60px; font-size: 14px; backdrop-filter: blur(4px);">🎬 创作者 50w+</span>
+                <span style="background: rgba(255,255,255,0.18); padding: 8px 28px; border-radius: 60px; font-size: 14px; backdrop-filter: blur(4px);">💰 月分成 5000w+</span>
+                <span style="background: rgba(255,255,255,0.18); padding: 8px 28px; border-radius: 60px; font-size: 14px; backdrop-filter: blur(4px);">🏆 糖心姐姐已入驻</span>
+            </div>
+        </div>
+
+        <!-- 收益卡片 - 产品要突出 -->
+        <div class="section-header">
+            <h3>💰 创作者收益</h3>
+            <span class="view-all" style="color: #8d99ae;">官方收益计划</span>
+        </div>
+        <div class="earning-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 48px;">
+            <div class="earning-card creator-card-hover" style="background: #fff; border-radius: 24px; padding: 32px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 52px; margin-bottom: 16px;">🎬</div>
+                <h3 style="margin-bottom: 12px; font-size: 20px;">播放分成</h3>
+                <div style="font-size: 38px; font-weight: 800; color: #ff4d6d; margin-bottom: 12px;">¥0.5-2</div>
+                <p style="color: #8d99ae; font-size: 14px;">每千次播放收益</p>
+            </div>
+            <div class="earning-card creator-card-hover" style="background: #fff; border-radius: 24px; padding: 32px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 52px; margin-bottom: 16px;">💝</div>
+                <h3 style="margin-bottom: 12px; font-size: 20px;">打赏收入</h3>
+                <div style="font-size: 38px; font-weight: 800; color: #ff4d6d; margin-bottom: 12px;">70%</div>
+                <p style="color: #8d99ae; font-size: 14px;">打赏金额分成比例</p>
+            </div>
+            <div class="earning-card creator-card-hover" style="background: #fff; border-radius: 24px; padding: 32px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 52px; margin-bottom: 16px;">🤝</div>
+                <h3 style="margin-bottom: 12px; font-size: 20px;">广告合作</h3>
+                <div style="font-size: 38px; font-weight: 800; color: #ff4d6d; margin-bottom: 12px;">¥500+</div>
+                <p style="color: #8d99ae; font-size: 14px;">单条广告起步价</p>
+            </div>
+            <div class="earning-card creator-card-hover" style="background: #fff; border-radius: 24px; padding: 32px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <div style="font-size: 52px; margin-bottom: 16px;">🛍️</div>
+                <h3 style="margin-bottom: 12px; font-size: 20px;">电商带货</h3>
+                <div style="font-size: 38px; font-weight: 800; color: #ff4d6d; margin-bottom: 12px;">10-30%</div>
+                <p style="color: #8d99ae; font-size: 14px;">商品销售佣金</p>
+            </div>
+        </div>
+
+        <!-- 创作者服务 -->
+        <div class="section-header">
+            <h3>✨ 创作者服务</h3>
+            <a href="javascript:void(0)" class="view-all" onclick="viewAllServices()">了解全部服务 →</a>
+        </div>
+        <div class="services-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 48px;">
+            <div class="service-card" style="background: linear-gradient(145deg, #f8f9fa, #fff); border-radius: 24px; padding: 32px 20px; text-align: center; border: 1px solid #f0f0f0;">
+                <div style="font-size: 48px; margin-bottom: 16px;">📊</div>
+                <h4 style="margin-bottom: 10px; font-size: 18px;">数据分析</h4>
+                <p style="color: #8d99ae; font-size: 13px; line-height: 1.5;">视频播放、粉丝增长等详细数据</p>
+            </div>
+            <div class="service-card" style="background: linear-gradient(145deg, #f8f9fa, #fff); border-radius: 24px; padding: 32px 20px; text-align: center; border: 1px solid #f0f0f0;">
+                <div style="font-size: 48px; margin-bottom: 16px;">🎓</div>
+                <h4 style="margin-bottom: 10px; font-size: 18px;">创作培训</h4>
+                <p style="color: #8d99ae; font-size: 13px; line-height: 1.5;">官方课程指导，从入门到精通</p>
+            </div>
+            <div class="service-card" style="background: linear-gradient(145deg, #f8f9fa, #fff); border-radius: 24px; padding: 32px 20px; text-align: center; border: 1px solid #f0f0f0;">
+                <div style="font-size: 48px; margin-bottom: 16px;">🚀</div>
+                <h4 style="margin-bottom: 10px; font-size: 18px;">流量扶持</h4>
+                <p style="color: #8d99ae; font-size: 13px; line-height: 1.5;">首页推荐位，让你的视频被更多人看到</p>
+            </div>
+            <div class="service-card" style="background: linear-gradient(145deg, #f8f9fa, #fff); border-radius: 24px; padding: 32px 20px; text-align: center; border: 1px solid #f0f0f0;">
+                <div style="font-size: 48px; margin-bottom: 16px;">💰</div>
+                <h4 style="margin-bottom: 10px; font-size: 18px;">商业对接</h4>
+                <p style="color: #8d99ae; font-size: 13px; line-height: 1.5;">品牌合作资源，帮你变现</p>
+            </div>
+        </div>
+
+        <!-- 成功创作者案例 -->
+        <div class="section-header">
+            <h3>🌟 成功创作者</h3>
+            <span class="view-all" style="color: #8d99ae;">糖心签约创作者</span>
+        </div>
+        <div class="creator-showcase" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 48px;">
+            <div class="creator-profile" style="background: #fff; border-radius: 28px; padding: 28px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; gap: 24px; flex-wrap: wrap;" onclick="visitCreator('糖心姐姐')">
+                <img src="https://picsum.photos/id/64/100/100" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover;" alt="糖心姐姐">
+                <div style="flex: 1;">
+                    <h3 style="margin-bottom: 6px; font-size: 22px;">糖心姐姐</h3>
+                    <span style="color: #ff4d6d; font-size: 14px; display: block; margin-bottom: 12px;">糖心认证美妆达人 · 粉丝 156w</span>
+                    <p style="color: #8d99ae; margin-bottom: 16px; line-height: 1.5;">加入糖心Vlog 2年，从零开始成长为百万粉丝创作者，月收益稳定10w+</p>
+                    <div style="display: flex; gap: 20px; font-size: 14px;">
+                        <span>📹 作品 203</span>
+                        <span>▶️ 总播放 3.8亿</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creator-profile" style="background: #fff; border-radius: 28px; padding: 28px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; gap: 24px; flex-wrap: wrap;" onclick="visitCreator('动漫宅')">
+                <img src="https://picsum.photos/id/27/100/100" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover;" alt="动漫宅">
+                <div style="flex: 1;">
+                    <h3 style="margin-bottom: 6px; font-size: 22px;">动漫宅</h3>
+                    <span style="color: #ff4d6d; font-size: 14px; display: block; margin-bottom: 12px;">糖心舞蹈达人 · 粉丝 132w</span>
+                    <p style="color: #8d99ae; margin-bottom: 16px; line-height: 1.5;">专注舞蹈创作，通过糖心商业对接，已与多个品牌达成合作，月收益8w+</p>
+                    <div style="display: flex; gap: 20px; font-size: 14px;">
+                        <span>📹 作品 156</span>
+                        <span>▶️ 总播放 2.3亿</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加入创作 - CTA区域 -->
+        <div class="cta-section" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); border-radius: 32px; padding: 56px 40px; text-align: center; color: #fff; margin-bottom: 50px;">
+            <h2 style="font-size: 34px; margin-bottom: 16px;">加入糖心创作中心</h2>
+            <p style="font-size: 18px; margin-bottom: 32px; opacity: 0.92; max-width: 500px; margin-left: auto; margin-right: auto;">成为糖心Vlog认证创作者，开启你的创作之旅</p>
+            <button class="btn-join" onclick="applyForCreator()" style="background: #fff; color: #ff4d6d; border: none; padding: 16px 56px; border-radius: 60px; font-size: 18px; font-weight: 700; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">立即入驻糖心</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>糖心创作中心</h4>
+                    <p>糖心Vlog官方创作者平台 - 让创作更有价值，让你的才华被更多人看见。</p>
+                </div>
+                <div class="footer-links">
+                    <h5>创作者服务</h5>
+                    <a href="javascript:void(0)" onclick="viewAllServices()">收益计划</a>
+                    <a href="javascript:void(0)" onclick="location.href='creator-guide.html'">创作指南</a>
+                    <a href="javascript:void(0)" onclick="location.href='growth-plan.html'">成长计划</a>
+                </div>
+                <div class="footer-links">
+                    <h5>商业合作</h5>
+                    <a href="javascript:void(0)" onclick="location.href='brand-coop.html'">品牌合作</a>
+                    <a href="javascript:void(0)" onclick="location.href='advertising.html'">广告投放</a>
+                </div>
+                <div class="footer-links">
+                    <h5>官方支持</h5>
+                    <a href="javascript:void(0)" onclick="location.href='help.html'">帮助中心</a>
+                    <a href="javascript:void(0)" onclick="location.href='copyright.html'">版权保护</a>
+                    <a href="javascript:void(0)" onclick="location.href='feedback.html'">意见反馈</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2020-<script>document.write(new Date().getFullYear())</script> 糖心创作中心 ｜ 让创作更有价值</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // 服务相关
+    function viewAllServices() {
+        console.log('[查看全部服务]');
+        window.location.href = 'creator-services.html';
+    }
+    
+    // 申请入驻
+    function applyForCreator() {
+        console.log('[申请入驻]');
+        // 这里应该打开申请表单
+        window.location.href = 'creator-apply.html';
+    }
+    
+    // 访问创作者主页
+    function visitCreator(name) {
+        console.log('[访问创作者] ' + name);
+        window.location.href = 'creator.html?uid=' + encodeURIComponent(name);
+    }
+    
+    // 页面加载
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('糖心创作中心已加载 | ' + new Date().toLocaleString());
+        // TODO: 添加埋点统计
+    });
+    </script>
+</body>
+</html>

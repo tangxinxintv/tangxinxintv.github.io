@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="robots" content="index,follow">
+    <title>糖心搜索 - 糖心vlog网页版 - 发现你想看的内容</title>
+    <meta name="description" content="糖心搜索,糖心vlog网页版搜索,糖心视频在线观看搜索,糖心tv搜索 输入关键词，发现更多精彩内容。">
+    <meta name="keywords" content="视频搜索,内容搜索,糖心搜索,发现视频">
+    <link rel="canonical" href="/search/">
+    <link rel="stylesheet" href="static/css/style.css?v=20240315">
+    <script type="text/javascript" src="static/js/tz.js"></script>
+    <!-- 搜索页面临时样式 -->
+    <style>
+        .search-result-item {
+            transition: background 0.2s;
+        }
+        .search-result-item:hover {
+            background: #fafafa;
+        }
+        .related-tag {
+            transition: all 0.2s;
+        }
+        .related-tag:hover {
+            background: #ff4d6d !important;
+            color: #fff !important;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-area">
+                    <div class="logo-circle">糖</div>
+                    <div class="logo-text">
+                        <h1>糖心搜索</h1>
+                        <span>发现你想看的内容</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-item">首页</a>
+                    <a href="video.html" class="nav-item">视频</a>
+                    <a href="tv.html" class="nav-item">糖心TV</a>
+                    <a href="creator.html">创作中心</a>
+                    <a href="community.html">社区</a>
+                    <a href="tools.html">创作工具</a>
+                    <a href="search.html" class="nav-item active">搜索</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 面包屑 -->
+        <div class="breadcrumb" style="padding: 20px 0; color: #8d99ae; font-size: 14px;">
+            <a href="index.html" style="color: #ff4d6d; text-decoration: none;">首页</a> &gt; 
+            <span style="color: #2b2d42;">搜索</span>
+        </div>
+
+        <!-- 搜索框区域 - 居中显示 -->
+        <div class="search-area" style="margin: 20px 0 35px 0;">
+            <div class="search-wrapper" style="max-width: 720px; margin: 0 auto; background: #fff; border-radius: 60px; padding: 5px; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                <input type="text" id="searchInput" placeholder="搜视频、找博主、看热门..." value="糖心vlog" style="flex: 1; border: none; padding: 16px 28px; font-size: 16px; outline: none; background: transparent; border-radius: 60px;">
+                <button onclick="handleSearch()" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; border: none; padding: 12px 42px; border-radius: 50px; font-weight: 600; font-size: 15px; cursor: pointer; margin-right: 6px;">搜一下</button>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <span style="color: #8d99ae; font-size: 14px;">大家都在搜：</span>
+                <a href="javascript:void(0)" onclick="quickSearch('日常vlog')" style="color: #ff4d6d; margin: 0 12px; font-size: 14px; text-decoration: none;">日常vlog</a>
+                <a href="javascript:void(0)" onclick="quickSearch('美妆教程')" style="color: #ff4d6d; margin: 0 12px; font-size: 14px; text-decoration: none;">美妆教程</a>
+                <a href="javascript:void(0)" onclick="quickSearch('舞蹈翻跳')" style="color: #ff4d6d; margin: 0 12px; font-size: 14px; text-decoration: none;">舞蹈翻跳</a>
+                <a href="javascript:void(0)" onclick="quickSearch('citywalk')" style="color: #ff4d6d; margin: 0 12px; font-size: 14px; text-decoration: none;">citywalk</a>
+                <a href="javascript:void(0)" onclick="quickSearch('MBTI')" style="color: #ff4d6d; margin: 0 12px; font-size: 14px; text-decoration: none;">MBTI</a>
+            </div>
+        </div>
+
+        <!-- 搜索结果区域 -->
+        <div class="search-results" style="background: #fff; border-radius: 32px; padding: 32px; margin-bottom: 45px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+            <div style="margin-bottom: 28px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0;">
+                <h3 style="font-size: 20px; margin-bottom: 6px;">“糖心vlog” 的搜索结果</h3>
+                <p style="color: #8d99ae; font-size: 14px;">找到约 12,500 个相关视频</p>
+            </div>
+
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+                <!-- 搜索结果视频卡片 -->
+                <article class="search-result-item video-item" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('日系甜美妆容教程', '糖心姐姐')">
+                    <div class="thumbnail" style="position: relative; height: 165px;">
+                        <img src="https://picsum.photos/id/20/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="视频封面" loading="lazy">
+                        <div class="play-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;">
+                            <div class="play-icon" style="width: 48px; height: 48px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;"></div>
+                        </div>
+                        <span class="video-duration" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">08:32</span>
+                    </div>
+                    <div class="video-info" style="padding: 14px;">
+                        <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 10px; line-height: 1.4;">日系甜美妆容教程｜手残党也能学会</h4>
+                        <div class="video-meta" style="display: flex; align-items: center; justify-content: space-between; color: #8d99ae; font-size: 12px;">
+                            <div class="uploader" style="display: flex; align-items: center; gap: 8px;">
+                                <img src="https://picsum.photos/id/64/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                                <span>糖心姐姐</span>
+                            </div>
+                            <span>12.5w播放</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="search-result-item video-item" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('樱花树下的初音未来', '动漫宅')">
+                    <div class="thumbnail" style="position: relative; height: 165px;">
+                        <img src="https://picsum.photos/id/104/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="视频封面" loading="lazy">
+                        <div class="play-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0;"></div>
+                        <span class="video-duration" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">05:18</span>
+                    </div>
+                    <div class="video-info" style="padding: 14px;">
+                        <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 10px;">樱花树下的初音未来｜超还原Cosplay</h4>
+                        <div class="video-meta" style="display: flex; align-items: center; justify-content: space-between; color: #8d99ae; font-size: 12px;">
+                            <div class="uploader" style="display: flex; align-items: center; gap: 8px;">
+                                <img src="https://picsum.photos/id/27/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                                <span>动漫宅</span>
+                            </div>
+                            <span>8.6w播放</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="search-result-item video-item" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('NewJeans舞蹈翻跳', '糖心舞动')">
+                    <div class="thumbnail" style="position: relative; height: 165px;">
+                        <img src="https://picsum.photos/id/26/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="视频封面" loading="lazy">
+                        <div class="play-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0;"></div>
+                        <span class="video-duration" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">03:45</span>
+                    </div>
+                    <div class="video-info" style="padding: 14px;">
+                        <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 10px;">NewJeans新歌舞蹈翻跳｜超丝滑运镜</h4>
+                        <div class="video-meta" style="display: flex; align-items: center; justify-content: space-between; color: #8d99ae; font-size: 12px;">
+                            <div class="uploader" style="display: flex; align-items: center; gap: 8px;">
+                                <img src="https://picsum.photos/id/29/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                                <span>糖心舞动</span>
+                            </div>
+                            <span>15.2w播放</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="search-result-item video-item" style="background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.05); cursor: pointer;" onclick="playVideo('一人食｜懒人版红烧肉', '糖心美食家')">
+                    <div class="thumbnail" style="position: relative; height: 165px;">
+                        <img src="https://picsum.photos/id/127/400/225" style="width: 100%; height: 100%; object-fit: cover;" alt="视频封面" loading="lazy">
+                        <div class="play-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0;"></div>
+                        <span class="video-duration" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 11px;">10:22</span>
+                    </div>
+                    <div class="video-info" style="padding: 14px;">
+                        <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 10px;">一人食｜懒人版红烧肉，电饭煲就能搞定</h4>
+                        <div class="video-meta" style="display: flex; align-items: center; justify-content: space-between; color: #8d99ae; font-size: 12px;">
+                            <div class="uploader" style="display: flex; align-items: center; gap: 8px;">
+                                <img src="https://picsum.photos/id/30/24/24" style="width: 24px; height: 24px; border-radius: 50%;" alt="头像">
+                                <span>糖心美食家</span>
+                            </div>
+                            <span>9.8w播放</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 分页 -->
+            <div style="display: flex; justify-content: center; gap: 12px; margin-top: 40px;">
+                <a href="javascript:void(0)" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: #fff; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;">1</a>
+                <a href="javascript:void(0)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;" onclick="loadMore()">2</a>
+                <a href="javascript:void(0)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;" onclick="loadMore()">3</a>
+                <a href="javascript:void(0)" style="background: #f0f0f0; color: #2b2d42; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-size: 14px;" onclick="loadMore()">下一页</a>
+            </div>
+
+            <!-- 相关搜索 -->
+            <div style="margin-top: 42px; padding-top: 30px; border-top: 1px solid #eee;">
+                <h4 style="margin-bottom: 18px; font-size: 16px;">相关搜索</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                    <a href="javascript:void(0)" onclick="quickSearch('糖心vlog教程')" class="related-tag" style="background: #f5f5f5; padding: 8px 22px; border-radius: 40px; color: #2b2d42; text-decoration: none; font-size: 14px; transition: all 0.2s;">糖心vlog教程</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('vlog拍摄技巧')" class="related-tag" style="background: #f5f5f5; padding: 8px 22px; border-radius: 40px; color: #2b2d42; text-decoration: none; font-size: 14px;">vlog拍摄技巧</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('生活记录')" class="related-tag" style="background: #f5f5f5; padding: 8px 22px; border-radius: 40px; color: #2b2d42; text-decoration: none; font-size: 14px;">生活记录</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('美妆分享')" class="related-tag" style="background: #f5f5f5; padding: 8px 22px; border-radius: 40px; color: #2b2d42; text-decoration: none; font-size: 14px;">美妆分享</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('舞蹈教学')" class="related-tag" style="background: #f5f5f5; padding: 8px 22px; border-radius: 40px; color: #2b2d42; text-decoration: none; font-size: 14px;">舞蹈教学</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('美食探店')" class="related-tag" style="background: #f5f5f5; padding: 8px 22px; border-radius: 40px; color: #2b2d42; text-decoration: none; font-size: 14px;">美食探店</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>糖心搜索</h4>
+                    <p>糖心Vlog搜索引擎 - 快速找到你想看的内容，发现更多精彩视频。</p>
+                </div>
+                <div class="footer-links">
+                    <h5>热门搜索</h5>
+                    <a href="javascript:void(0)" onclick="quickSearch('日常vlog')">日常vlog</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('美妆教程')">美妆教程</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('舞蹈翻跳')">舞蹈翻跳</a>
+                </div>
+                <div class="footer-links">
+                    <h5>发现更多</h5>
+                    <a href="javascript:void(0)" onclick="location.href='trending.html'"> trending</a>
+                    <a href="javascript:void(0)" onclick="location.href='recommend.html'">推荐视频</a>
+                </div>
+                <div class="footer-links">
+                    <h5>帮助中心</h5>
+                    <a href="javascript:void(0)" onclick="location.href='search-help.html'">搜索帮助</a>
+                    <a href="javascript:void(0)" onclick="location.href='feedback.html'">意见反馈</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2020-<script>document.write(new Date().getFullYear())</script> 糖心搜索 ｜ 发现你想看的内容</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // 获取URL参数
+    function getUrlParam(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURIComponent(r[2]);
+        return null;
+    }
+    
+    // 搜索功能
+    function handleSearch() {
+        var keyword = document.getElementById('searchInput').value.trim();
+        if (keyword) {
+            console.log('[搜索] 关键词：' + keyword);
+            window.location.href = 'search.html?q=' + encodeURIComponent(keyword);
+        } else {
+            var inputEl = document.getElementById('searchInput');
+            inputEl.placeholder = '输入你想找的内容～';
+            inputEl.style.border = '1px solid #ff4d6d';
+            setTimeout(function() {
+                inputEl.style.border = '';
+                inputEl.placeholder = '搜视频、找博主、看热门...';
+            }, 1500);
+        }
+    }
+    
+    // 快捷搜索
+    function quickSearch(keyword) {
+        console.log('[快捷搜索] ' + keyword);
+        window.location.href = 'search.html?q=' + encodeURIComponent(keyword);
+    }
+    
+    // 播放视频
+    function playVideo(title, author) {
+        console.log('[播放视频] ' + title);
+        window.location.href = 'video-detail.html?title=' + encodeURIComponent(title);
+    }
+    
+    // 加载更多（模拟）
+    function loadMore() {
+        console.log('[加载更多]');
+        alert('更多搜索结果加载中...');
+    }
+    
+    // 页面加载时，如果URL有q参数，自动填入搜索框
+    document.addEventListener('DOMContentLoaded', function() {
+        var searchKeyword = getUrlParam('q');
+        if (searchKeyword) {
+            document.getElementById('searchInput').value = searchKeyword;
+            console.log('[自动搜索] ' + searchKeyword);
+        }
+        console.log('糖心搜索页面已加载 | ' + new Date().toLocaleString());
+    });
+    </script>
+</body>
+</html>

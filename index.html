@@ -1,0 +1,568 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="robots" content="index,follow">
+    <title>糖心Vlog - 记录生活每一刻</title>
+    <meta name="description" content="糖心Vlog是一个温暖的视频分享社区，这里有美妆教程、舞蹈表演、美食制作等内容。分享你的生活，发现更多美好。">
+    <meta name="keywords" content="vlog,视频分享,生活记录,原创视频,美妆教程,舞蹈视频">
+    <link rel="canonical" href="/">
+    <link rel="stylesheet" href="static/css/style.css?v=20240315">
+    <script type="text/javascript" src="static/js/tz.js"></script>
+    <!-- 临时内联样式，后续会迁移到style.css - by 小糖 -->
+    <style>
+        .temp-fix { display: none; } /* 临时占位，回头删 */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-area">
+                    <div class="logo-circle">糖</div>
+                    <div class="logo-text">
+                        <h1>糖心Vlog</h1>
+                        <span>记录生活每一刻</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-item">首页</a>
+                    <a href="video.html" class="nav-item">视频</a>
+                    <a href="tv.html" class="nav-item">糖心TV</a>
+                    <a href="creator.html">创作中心</a>
+                    <a href="community.html" class="nav-item active">社区</a>
+                    <a href="tools.html">创作工具</a>
+                    <a href="search.html" class="nav-item">搜索</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 搜索区域 - 2024年新增，产品说要突出一下 -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="搜视频、找博主、看热门...">
+                <button onclick="handleSearch()">搜一下</button>
+            </div>
+            <div class="hot-searches">
+                <span class="hot-label">🔥 大家都在搜：</span>
+                <div class="hot-tags">
+                    <a href="javascript:void(0)" onclick="quickSearch('日常vlog')">日常vlog</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('美妆教程')">美妆教程</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('舞蹈翻跳')">舞蹈翻跳</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('美食探店')">美食探店</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('旅行日记')">旅行日记</a>
+                    <a href="javascript:void(0)" onclick="quickSearch('萌宠日常')">萌宠日常</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero区域 - 品牌文案改了好几版，最终定的这个 -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <span class="hero-badge">✨ 记录生活 分享热爱</span>
+                <h2>
+                    用镜头记录美好
+                    <span>让每一天都值得回忆</span>
+                </h2>
+                <p>糖心Vlog致力于打造一个温暖的视频社区，在这里你可以分享生活趣事、学习新技能、发现志同道合的朋友。每天都有新鲜内容等你来发现。</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="number">500w+</div>
+                        <div class="label">活跃用户</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">100w+</div>
+                        <div class="label">原创视频</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">24h</div>
+                        <div class="label">实时更新</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门视频模块 - 数据从接口拉，先写死 -->
+        <div class="section-header">
+            <h3>🔥 本周热门</h3>
+            <a href="video.html" class="view-all">查看更多 →</a>
+        </div>
+        <div class="video-grid">
+            <article class="video-item" onclick="playVideo('日系甜美妆容教程', '糖心姐姐')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/20/400/225" alt="美妆教程封面" loading="lazy" onerror="this.src='https://picsum.photos/id/1/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">美妆</span>
+                    <span class="video-duration">08:32</span>
+                </div>
+                <div class="video-info">
+                    <h4>日系甜美妆容教程｜手残党也能学会</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/64/32/32" alt="糖心姐姐头像" onerror="this.src='https://picsum.photos/id/64/32/32'">
+                            <span>糖心姐姐</span>
+                        </div>
+                        <span>12.5w播放</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('樱花树下的初音未来', '动漫宅')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/104/400/225" alt="cosplay封面" loading="lazy" onerror="this.src='https://picsum.photos/id/104/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">二次元</span>
+                    <span class="video-duration">05:18</span>
+                </div>
+                <div class="video-info">
+                    <h4>樱花树下的初音未来｜超还原Cosplay</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/27/32/32" alt="动漫宅头像" onerror="this.src='https://picsum.photos/id/27/32/32'">
+                            <span>动漫宅</span>
+                        </div>
+                        <span>8.6w播放</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('NewJeans舞蹈翻跳', '糖心舞动')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/26/400/225" alt="舞蹈翻跳封面" loading="lazy" onerror="this.src='https://picsum.photos/id/26/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">舞蹈</span>
+                    <span class="video-duration">03:45</span>
+                </div>
+                <div class="video-info">
+                    <h4>NewJeans新歌舞蹈翻跳｜超丝滑运镜</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/29/32/32" alt="糖心舞动头像" onerror="this.src='https://picsum.photos/id/29/32/32'">
+                            <span>糖心舞动</span>
+                        </div>
+                        <span>15.2w播放</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('一人食｜懒人版红烧肉', '糖心美食家')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/127/400/225" alt="美食制作封面" loading="lazy" onerror="this.src='https://picsum.photos/id/127/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">美食</span>
+                    <span class="video-duration">10:22</span>
+                </div>
+                <div class="video-info">
+                    <h4>一人食｜懒人版红烧肉，电饭煲就能搞定</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/30/32/32" alt="糖心美食家头像" onerror="this.src='https://picsum.photos/id/30/32/32'">
+                            <span>糖心美食家</span>
+                        </div>
+                        <span>9.8w播放</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('早秋穿搭灵感', '糖心时尚')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/96/400/225" alt="穿搭分享封面" loading="lazy" onerror="this.src='https://picsum.photos/id/96/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">穿搭</span>
+                    <span class="video-duration">06:55</span>
+                </div>
+                <div class="video-info">
+                    <h4>早秋穿搭灵感｜百搭单品分享</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/55/32/32" alt="糖心时尚头像" onerror="this.src='https://picsum.photos/id/55/32/32'">
+                            <span>糖心时尚</span>
+                        </div>
+                        <span>7.3w播放</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('一个人的周末｜治愈系vlog', '糖心生活家')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/169/400/225" alt="生活vlog封面" loading="lazy" onerror="this.src='https://picsum.photos/id/169/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">日常</span>
+                    <span class="video-duration">12:08</span>
+                </div>
+                <div class="video-info">
+                    <h4>一个人的周末｜治愈系慢生活vlog</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/42/32/32" alt="糖心生活家头像" onerror="this.src='https://picsum.photos/id/42/32/32'">
+                            <span>糖心生活家</span>
+                        </div>
+                        <span>11.2w播放</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- 分类区域 - 产品要求按这个顺序 -->
+        <div class="categories">
+            <div class="section-header">
+                <h3>📺 发现更多</h3>
+                <a href="javascript:void(0)" class="view-all" onclick="showAllCategories()">全部分类 →</a>
+            </div>
+            <div class="category-grid">
+                <div class="category-item" onclick="filterByCategory('影视')">
+                    <div class="category-icon">🎬</div>
+                    <h4>影视剪辑</h4>
+                    <span>2.5w+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('美妆')">
+                    <div class="category-icon">💄</div>
+                    <h4>美妆护肤</h4>
+                    <span>1.8w+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('舞蹈')">
+                    <div class="category-icon">💃</div>
+                    <h4>舞蹈翻跳</h4>
+                    <span>1.2w+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('二次元')">
+                    <div class="category-icon">🎭</div>
+                    <h4>二次元</h4>
+                    <span>3.2w+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('美食')">
+                    <div class="category-icon">🍳</div>
+                    <h4>美食探店</h4>
+                    <span>8k+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('旅行')">
+                    <div class="category-icon">✈️</div>
+                    <h4>旅行日记</h4>
+                    <span>6k+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('游戏')">
+                    <div class="category-icon">🎮</div>
+                    <h4>游戏实况</h4>
+                    <span>5k+视频</span>
+                </div>
+                <div class="category-item" onclick="filterByCategory('萌宠')">
+                    <div class="category-icon">🐱</div>
+                    <h4>萌宠日常</h4>
+                    <span>4k+视频</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 排行榜区域 -->
+        <div class="rankings">
+            <div class="rankings-grid">
+                <div class="rank-card">
+                    <div class="rank-header">
+                        <div class="rank-icon">🏆</div>
+                        <h4>视频周榜</h4>
+                    </div>
+                    <ul class="rank-list">
+                        <li onclick="playVideo('夏日清凉穿搭｜一件白T的N种搭法', '糖心姐姐')">
+                            <span class="rank-num">1</span>
+                            <div class="rank-info">
+                                <div class="rank-title">夏日清凉穿搭｜一件白T的N种搭法</div>
+                                <div class="rank-stats">128.5w播放</div>
+                            </div>
+                        </li>
+                        <li onclick="playVideo('Kpop舞蹈教学｜零基础也能跳', '糖心舞动')">
+                            <span class="rank-num">2</span>
+                            <div class="rank-info">
+                                <div class="rank-title">Kpop舞蹈教学｜零基础也能跳</div>
+                                <div class="rank-stats">98.2w播放</div>
+                            </div>
+                        </li>
+                        <li onclick="playVideo('5点早起｜自律给我自由', '糖心日常')">
+                            <span class="rank-num">3</span>
+                            <div class="rank-info">
+                                <div class="rank-title">5点早起｜自律给我自由</div>
+                                <div class="rank-stats">76.8w播放</div>
+                            </div>
+                        </li>
+                        <li onclick="playVideo('云南旅行vlog｜大理丽江7天攻略', '糖心旅行家')">
+                            <span class="rank-num">4</span>
+                            <div class="rank-info">
+                                <div class="rank-title">云南旅行vlog｜大理丽江7天攻略</div>
+                                <div class="rank-stats">65.3w播放</div>
+                            </div>
+                        </li>
+                        <li onclick="playVideo('沉浸式收纳｜治愈强迫症', '糖心生活家')">
+                            <span class="rank-num">5</span>
+                            <div class="rank-info">
+                                <div class="rank-title">沉浸式收纳｜治愈强迫症</div>
+                                <div class="rank-stats">54.1w播放</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-header">
+                        <div class="rank-icon">🔥</div>
+                        <h4>达人榜</h4>
+                    </div>
+                    <ul class="rank-list">
+                        <li onclick="visitCreator('糖心姐姐')">
+                            <span class="rank-num">1</span>
+                            <div class="rank-info">
+                                <div class="rank-title">糖心姐姐</div>
+                                <div class="rank-stats">粉丝 156w</div>
+                            </div>
+                        </li>
+                        <li onclick="visitCreator('动漫宅')">
+                            <span class="rank-num">2</span>
+                            <div class="rank-info">
+                                <div class="rank-title">动漫宅</div>
+                                <div class="rank-stats">粉丝 132w</div>
+                            </div>
+                        </li>
+                        <li onclick="visitCreator('糖心小雅')">
+                            <span class="rank-num">3</span>
+                            <div class="rank-info">
+                                <div class="rank-title">糖心小雅</div>
+                                <div class="rank-stats">粉丝 98w</div>
+                            </div>
+                        </li>
+                        <li onclick="visitCreator('糖心舞者')">
+                            <span class="rank-num">4</span>
+                            <div class="rank-info">
+                                <div class="rank-title">糖心舞者</div>
+                                <div class="rank-stats">粉丝 87w</div>
+                            </div>
+                        </li>
+                        <li onclick="visitCreator('糖心美食家')">
+                            <span class="rank-num">5</span>
+                            <div class="rank-info">
+                                <div class="rank-title">糖心美食家</div>
+                                <div class="rank-stats">粉丝 76w</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-header">
+                        <div class="rank-icon">⭐</div>
+                        <h4>热搜词</h4>
+                    </div>
+                    <ul class="rank-list">
+                        <li onclick="quickSearch('citywalk')">
+                            <span class="rank-num">1</span>
+                            <div class="rank-info">
+                                <div class="rank-title">citywalk城市漫游</div>
+                                <div class="rank-stats">搜索 23w+</div>
+                            </div>
+                        </li>
+                        <li onclick="quickSearch('多巴胺穿搭')">
+                            <span class="rank-num">2</span>
+                            <div class="rank-info">
+                                <div class="rank-title">多巴胺穿搭</div>
+                                <div class="rank-stats">搜索 18w+</div>
+                            </div>
+                        </li>
+                        <li onclick="quickSearch('沉浸式')">
+                            <span class="rank-num">3</span>
+                            <div class="rank-info">
+                                <div class="rank-title">沉浸式</div>
+                                <div class="rank-stats">搜索 15w+</div>
+                            </div>
+                        </li>
+                        <li onclick="quickSearch('MBTI')">
+                            <span class="rank-num">4</span>
+                            <div class="rank-info">
+                                <div class="rank-title">MBTI人格测试</div>
+                                <div class="rank-stats">搜索 12w+</div>
+                            </div>
+                        </li>
+                        <li onclick="quickSearch('反内卷')">
+                            <span class="rank-num">5</span>
+                            <div class="rank-info">
+                                <div class="rank-title">反内卷生活</div>
+                                <div class="rank-stats">搜索 9w+</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最新更新模块 -->
+        <div class="section-header">
+            <h3>🆕 最新发布</h3>
+            <a href="video.html?sort=new" class="view-all">更多最新 →</a>
+        </div>
+        <div class="video-grid">
+            <article class="video-item" onclick="playVideo('秋天的第一杯奶茶｜探店隐藏小店', '糖心姐姐')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/15/400/225" alt="秋日vlog封面" loading="lazy" onerror="this.src='https://picsum.photos/id/15/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">日常</span>
+                    <span class="video-duration">07:42</span>
+                </div>
+                <div class="video-info">
+                    <h4>秋天的第一杯奶茶｜探店隐藏小店</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/64/32/32" alt="糖心姐姐头像">
+                            <span>糖心姐姐</span>
+                        </div>
+                        <span>刚刚更新</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('花海中的舞蹈｜古风原创编舞', '动漫宅')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/103/400/225" alt="舞蹈视频封面" loading="lazy" onerror="this.src='https://picsum.photos/id/103/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">舞蹈</span>
+                    <span class="video-duration">09:15</span>
+                </div>
+                <div class="video-info">
+                    <h4>花海中的舞蹈｜古风原创编舞</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/27/32/32" alt="动漫宅头像">
+                            <span>动漫宅</span>
+                        </div>
+                        <span>2小时前</span>
+                    </div>
+                </div>
+            </article>
+            <article class="video-item" onclick="playVideo('周末宅家｜追剧、做饭、撸猫的快乐', '糖心日常')">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/42/400/225" alt="宅家vlog封面" loading="lazy" onerror="this.src='https://picsum.photos/id/42/400/225'">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                    <span class="video-badge">日常</span>
+                    <span class="video-duration">11:30</span>
+                </div>
+                <div class="video-info">
+                    <h4>周末宅家｜追剧、做饭、撸猫的快乐</h4>
+                    <div class="video-meta">
+                        <div class="uploader">
+                            <img src="https://picsum.photos/id/42/32/32" alt="糖心日常头像">
+                            <span>糖心日常</span>
+                        </div>
+                        <span>3小时前</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>糖心Vlog</h4>
+                    <p>糖心Vlog是一个温暖的视频分享社区，成立于2020年。我们相信每个人都是生活的导演，用镜头记录平凡日子里的闪光时刻。</p>
+                    <div class="hot-tags" style="justify-content: flex-start;">
+                        <a href="javascript:void(0)" onclick="quickSearch('vlog')">#vlog</a>
+                        <a href="javascript:void(0)" onclick="quickSearch('记录生活')">#记录生活</a>
+                        <a href="javascript:void(0)" onclick="quickSearch('日常')">#日常</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h5>发现视频</h5>
+                    <a href="javascript:void(0)" onclick="filterByCategory('热门')">热门推荐</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('最新')">最新发布</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('美妆')">美妆护肤</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('舞蹈')">舞蹈翻跳</a>
+                </div>
+                <div class="footer-links">
+                    <h5>关于我们</h5>
+                    <a href="javascript:void(0)" onclick="location.href='about.html'">关于糖心</a>
+                    <a href="javascript:void(0)" onclick="location.href='contact.html'">联系我们</a>
+                    <a href="javascript:void(0)" onclick="location.href='cooperation.html'">商务合作</a>
+                    <a href="javascript:void(0)" onclick="location.href='feedback.html'">意见反馈</a>
+                </div>
+                <div class="footer-links">
+                    <h5>创作者中心</h5>
+                    <a href="javascript:void(0)" onclick="location.href='creator-guide.html'">创作指南</a>
+                    <a href="javascript:void(0)" onclick="location.href='growth-plan.html'">创作者成长计划</a>
+                    <a href="javascript:void(0)" onclick="location.href='copyright.html'">版权保护</a>
+                    <a href="javascript:void(0)" onclick="location.href='help.html'">帮助中心</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2020-<script>document.write(new Date().getFullYear())</script> 糖心Vlog ｜ 记录生活的美好 ｜ 本网站内容均为用户分享，如有侵权请联系我们</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // 搜索相关函数 - 后续要对接后端接口
+    function handleSearch() {
+        var keyword = document.getElementById('searchInput').value.trim();
+        if (keyword) {
+            console.log('[搜索] 关键词：' + keyword);
+            // TODO: 跳转到搜索结果页，参数待定
+            window.location.href = 'search.html?q=' + encodeURIComponent(keyword);
+        } else {
+            // 空搜索提示，产品说不要用alert，暂时这样
+            var inputEl = document.getElementById('searchInput');
+            inputEl.placeholder = '请输入你想看的内容～';
+            inputEl.style.borderColor = '#ff6b6b';
+            setTimeout(function() {
+                inputEl.style.borderColor = '';
+                inputEl.placeholder = '搜视频、找博主、看热门...';
+            }, 1500);
+        }
+    }
+    
+    // 快捷搜索
+    function quickSearch(tag) {
+        console.log('[标签搜索] ' + tag);
+        window.location.href = 'search.html?tag=' + encodeURIComponent(tag);
+    }
+    
+    // 播放视频 - 跳转详情页
+    function playVideo(title, author) {
+        console.log('[播放视频] 《' + title + '》 by ' + author);
+        // 这里应该跳转到视频详情页
+        window.location.href = 'video-detail.html?title=' + encodeURIComponent(title);
+    }
+    
+    // 分类筛选
+    function filterByCategory(category) {
+        console.log('[分类筛选] ' + category);
+        window.location.href = 'video.html?category=' + encodeURIComponent(category);
+    }
+    
+    // 查看全部分类
+    function showAllCategories() {
+        console.log('[查看全部分类]');
+        window.location.href = 'categories.html';
+    }
+    
+    // 访问创作者主页
+    function visitCreator(name) {
+        console.log('[访问主页] ' + name);
+        window.location.href = 'creator.html?uid=' + encodeURIComponent(name);
+    }
+    
+    // 页面加载完成
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('糖心Vlog页面已加载 | ' + new Date().toLocaleString());
+        // 这里后面要加埋点代码
+    });
+    </script>
+</body>
+</html>
