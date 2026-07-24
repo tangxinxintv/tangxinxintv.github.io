@@ -2,7 +2,7 @@ document.write(`
 <div class="ad">
     <h2 class="ad-ti">超级精品联盟</h2>
     <li><a class="myButton" href="https://1.365daohang.cv" rel="nofollow" target="_blank"><img src="/tu2/lo.webp" class="nav-icon">➦</a></li>
-    <li><a class="myButton" href="https://hjw.aa545.club" rel="nofollow" target="_blank"><img src="/tu2/hai.webp" class="nav-icon">➦</a></li>
+    <li><a class="myButton" href="https://haijiao1.aa545.club" rel="nofollow" target="_blank"><img src="/tu2/hai.webp" class="nav-icon">➦</a></li>
     <li><a class="myButton" href="https://hanxiu.mm545.club" rel="nofollow" target="_blank"><img src="/tu2/han.webp" class="nav-icon">➦</a></li>
     <li><a class="myButton" href="https://19tv.mm545.club" rel="nofollow" target="_blank"><img src="/tu2/tv.webp" class="nav-icon">➦</a></li>
    
